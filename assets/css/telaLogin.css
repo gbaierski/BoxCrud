@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    font-family: 'Muli',sans-serif;
+}
+
+#containerLogin {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, rgb(43, 38, 38), rgb(89, 104, 110));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#tituloLogin {
+    font-size: 200%;
+    margin-bottom: 3%;
+    color: white;
+    cursor: default;
+}
+
+#boxLogin {
+    width: 600px;
+    height: 450px;
+    background-image: linear-gradient(to bottom right, rgba(30, 30, 30, 0.7), rgba(44, 56, 61, 0.7));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1.5%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px, rgba(0, 0, 0, 0.25) 0px 10px 15px;
+    transition: all .4s cubic-bezier(.22, .61, .36, 1);
+}
+
+#boxLogin:hover {
+    transform: scale(99%);
+    border-top: solid 3px #00c37e;
+}
+
+#logoLogin {
+    transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+#logoLogin:hover {
+    cursor: pointer;
+    transform: translateY(-5px) scale(102%);
+}
+
+#formLogin {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#botaoLogin {
+    margin-top: 5%;
+    border-radius: 2px;
+    background-color: #00c37e;
+    color: white;
+    border: none;
+    transition: all .4s cubic-bezier(.22, .61, .36, 1);
+}
+
+#botaoLogin:hover {
+    transform: scale(102%);
+    cursor: pointer;
+}
+
+#linkCadastro a {
+    color: #00c37e;
+}
+
+#linkCadastro a:hover {
+    color: white;
+}
+
+.inputLogin {
+    width: 70%;
+    height: 40px;
+    font-size: 18px;
+    color: rgb(40, 40, 40);
+    margin-bottom: 2%;
+}
