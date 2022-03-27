@@ -22,11 +22,12 @@
             <h1 id="tituloCadastro">Cadastro de usuário:</h1>
             <div id="boxCadastro">
                 <a href="../controller/redirect.php?action=telaLogin"><img src="../../assets/img/logo.png" width="130" height="130" alt="BoxTI" id="logoCadastro"></a>
-                <form method="POST" action="../controller/usuario.php?action=login" id="formCadastro">
+                <form method="POST" action="../controller/usuario.php?action=cadastrar" id="formCadastro">
                     <input type="text" name="nome" class="inputCadastro" placeholder="Nome" required>
                     <input type="email" name="email" class="inputCadastro" placeholder="E-mail" required>
                     <input type="password" name="senha" class="inputCadastro" placeholder="Senha" required>
                     <input type="password" name="confirmarSenha" class="inputCadastro" placeholder="Confirmar Senha" required>
+                    <input type="submit" id="botaoCadastro">
                     <button class="botaoCadastrar-pushable" onclick="cadastrar();">
                         <span class="botaoCadastrar-shadow"></span>
                         <span class="botaoCadastrar-edge"></span>
@@ -34,9 +35,13 @@
                             CADASTRAR
                         </span>
                     </button>
-                    <!-- <input type="submit" value="CADASTRAR" class="inputCadastro" id="botaoCadastro">  -->
                 </form>
             </div>
         </section>
     </body>
+    <script>
+        function cadastrar() {
+            document.getElementById("botaoCadastro").click();
+        }
+    </script>
 </html>

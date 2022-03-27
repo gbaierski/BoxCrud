@@ -54,6 +54,10 @@ body {
     align-items: center;
 }
 
+#botaoCadastro {
+    display: none;
+}
+
 .inputCadastro {
     width: 70%;
     height: 40px;
