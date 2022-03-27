@@ -16,9 +16,16 @@
                 <form method="POST" action="../controller/usuario.php?action=login" id="formLogin">
                     <input type="email" name="email" class="inputLogin" placeholder="E-mail" required>
                     <input type="password" name="senha" class="inputLogin" placeholder="Senha" required>
-                    <input type="submit" value="LOGIN" class="inputLogin" id="botaoLogin"> 
+                    <button class="botaoLogin-pushable" onclick="cadastrar();">
+                        <span class="botaoLogin-shadow"></span>
+                        <span class="botaoLogin-edge"></span>
+                        <span class="botaoLogin-front">
+                            LOGIN
+                        </span>
+                    </button>
+                    <!-- <input type="submit" value="LOGIN" class="inputLogin" id="botaoLogin">  -->
                 </form>
-                <div id="linkCadastro"><a href="#">Não possui uma conta? Cadastre-se!</a></div>
+                <div id="linkCadastro"><a href="../controller/redirect.php?action=telaCadastro">Não possui uma conta? Cadastre-se!</a></div>
             </div>
         </section>
     </body>
