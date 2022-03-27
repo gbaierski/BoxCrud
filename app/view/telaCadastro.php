@@ -23,7 +23,7 @@
             <div id="boxCadastro">
                 <a href="../controller/redirect.php?action=telaLogin"><img src="../../assets/img/logo.png" width="130" height="130" alt="BoxTI" id="logoCadastro"></a>
                 <form method="POST" action="../controller/usuario.php?action=login" id="formCadastro">
-                <input type="email" name="email" class="inputCadastro" placeholder="Nome" required>
+                    <input type="text" name="nome" class="inputCadastro" placeholder="Nome" required>
                     <input type="email" name="email" class="inputCadastro" placeholder="E-mail" required>
                     <input type="password" name="senha" class="inputCadastro" placeholder="Senha" required>
                     <input type="password" name="confirmarSenha" class="inputCadastro" placeholder="Confirmar Senha" required>
