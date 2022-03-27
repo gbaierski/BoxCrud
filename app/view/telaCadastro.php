@@ -25,10 +25,10 @@
                 <form method="POST" action="../controller/usuario.php?action=cadastrar" id="formCadastro">
                     <input type="text" name="nome" class="inputCadastro" placeholder="Nome" required>
                     <input type="email" name="email" class="inputCadastro" placeholder="E-mail" required>
-                    <input type="password" name="senha" class="inputCadastro" placeholder="Senha" required>
-                    <input type="password" name="confirmarSenha" class="inputCadastro" placeholder="Confirmar Senha" required>
-                    <input type="submit" id="botaoCadastro">
-                    <button class="botaoCadastrar-pushable" onclick="cadastrar();">
+                    <input type="password" name="senha" id="senha" class="inputCadastro" onkeyup="verificaSenha()" placeholder="Senha" required>
+                    <input type="password" name="confirmarSenha" id="confirmarSenha" class="inputCadastro" onkeyup="verificaSenha()" placeholder="Confirmar Senha" required>
+                    <input type="submit" id="submitCadastro">
+                    <button class="botaoCadastrar-pushable" id="botaoCadastro" onclick="cadastrar();">
                         <span class="botaoCadastrar-shadow"></span>
                         <span class="botaoCadastrar-edge"></span>
                         <span class="botaoCadastrar-front">
@@ -41,7 +41,26 @@
     </body>
     <script>
         function cadastrar() {
-            document.getElementById("botaoCadastro").click();
+            if (verificaSenha()) {
+                document.getElementById("botaoCadastro").click();
+            }
+        }
+
+        function verificaSenha() {
+            let senha = document.getElementById("senha").value;
+            let confirmarSenha = document.getElementById("confirmarSenha").value;
+            document.getElementById("botaoCadastro").onclick = "alert('aa');";
+            if(confirmarSenha == "") {
+                document.getElementById("confirmarSenha").style="border: none;";
+            } else if (senha != confirmarSenha){
+                document.getElementById("confirmarSenha").style="border: solid 2px #b11818;";
+                document.getElementById("botaoCadastro").style="display: none";
+                return false;
+            } else {
+                document.getElementById("confirmarSenha").style="border: solid 2px #00c37e;";
+                document.getElementById("botaoCadastro").style="display: block";
+                return true;
+            }
         }
     </script>
 </html>

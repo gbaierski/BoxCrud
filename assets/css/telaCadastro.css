@@ -54,8 +54,12 @@ body {
     align-items: center;
 }
 
-#botaoCadastro {
+#submitCadastro {
     display: none;
+}
+
+#botaoCadastro {
+  display: none;
 }
 
 .inputCadastro {
@@ -64,6 +68,7 @@ body {
     font-size: 18px;
     color: rgb(40, 40, 40);
     margin-bottom: 2%;
+    outline: none;
 }
 
 /*Botão Cadastrar*/

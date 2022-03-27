@@ -9,7 +9,16 @@ function login() {
 
 function cadastrar() {
     $usuario = new Usuario;
-    $usuario->cadastraUsuario($_POST['nome'], $_POST['email'], 1, base64_encode($_POST['senha']));
+    $cadastro = $usuario->cadastraUsuario($_POST['nome'], $_POST['email'], 1, base64_encode($_POST['senha']));
+
+    if ($cadastro) {
+        $mensagem = "Usuário cadastrado!";
+        $categoria = "Sucesso!";
+    } else {
+        $mensagem = "Ocorreu um erro durante o cadastro.";
+        $categoria = "Erro";
+    }
+
     $nomePagina = "Tela de Login | Box";
     require '../view/telaLogin.php';
 }

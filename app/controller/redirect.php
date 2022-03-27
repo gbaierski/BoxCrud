@@ -2,6 +2,8 @@
 
 function telaLogin() {
     $nomePagina = "Tela de Login | Box";
+    $mensagem = "";
+    $categoria = "";
     require '../view/telaLogin.php';
 }
 
