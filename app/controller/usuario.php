@@ -1,6 +1,7 @@
 
 <?php
 require_once ('../model/Usuario.php');
+require_once ('../model/Consulta.php');
 
 function login() {
     $usuario = new Usuario;
@@ -21,6 +22,12 @@ function cadastrar() {
 
     $nomePagina = "Tela de Login | Box";
     require '../view/telaLogin.php';
+}
+
+function verificaEmail() {
+    $consulta = new Consulta;
+    $verificacao = $consulta->consultaDuplicidadeEmail($_GET['email']);
+    echo json_encode(['duplicidade' => $verificacao]);
 }
 
 //Gerenciador de Rotas

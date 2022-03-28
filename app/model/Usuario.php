@@ -49,7 +49,7 @@ class Usuario {
 
     //consultas
     public function loginUsuario($email, $senha) {
-        $sql = "SELECT idUsuario, nome, email, senha FROM usuario WHERE email = $email AND senha = $senha";
+        $sql = "SELECT idUsuario, nome, email, senha FROM usuario WHERE email = '$email' AND senha = '$senha'";
         $query = mysqli_query($this->connection->getConnection(), $sql);
 
         if($query && mysqli_num_rows($query) != 0) {

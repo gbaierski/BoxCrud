@@ -9,6 +9,8 @@ function telaLogin() {
 
 function telaCadastro() {
     $nomePagina = "Tela de Cadastro | Box";
+    $mensagem = "";
+    $categoria = "";
     require '../view/telaCadastro.php';
 }
 
