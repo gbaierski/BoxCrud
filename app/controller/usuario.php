@@ -4,8 +4,8 @@ require_once ('../model/Usuario.php');
 require_once ('../model/Consulta.php');
 
 function login() {
-    $consulta = new Usuario;
-    $query = $consulta->loginUsuario($_POST['email'], base64_encode($_POST['senha']));
+    $usuario = new Usuario;
+    $query = $usuario->loginUsuario($_POST['email'], base64_encode($_POST['senha']));
 
     if ($query && mysqli_num_rows($query) != 0) {
         $row = mysqli_fetch_assoc($query);
@@ -27,6 +27,12 @@ function login() {
         header("Location: redirect.php?action=telaLogin");
     }
 
+}
+
+function logoff() {
+    session_start();
+    session_destroy();
+    header("Location: redirect.php?action=telaLogin");
 }
 
 function cadastrar() {
