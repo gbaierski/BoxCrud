@@ -49,21 +49,8 @@ class Usuario {
 
     //consultas
     public function loginUsuario($email, $senha) {
-        $sql = "SELECT idUsuario, nome, email, senha FROM usuario WHERE email = '$email' AND senha = '$senha'";
-        $query = mysqli_query($this->connection->getConnection(), $sql);
-
-        if($query && mysqli_num_rows($query) != 0) {
-            $row = mysqli_fetch_assoc($query);
-        } else {
-            return 0;
-        }
-
-        $this->idUsuario = $row['idUsuario'];
-        $this->nome = $row['nome'];
-        $this->email = $row['email'];
-        $this->senha = $row['senha'];
-
-        return 1;
+        $sql = "SELECT idUsuario, nome, email, senha, tipoUsuario FROM usuario WHERE email = '$email' AND senha = '$senha'";
+        return mysqli_query($this->connection->getConnection(), $sql);
     }
 
     //cadastros

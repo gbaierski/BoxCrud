@@ -62,12 +62,17 @@ body {
     color: white;
 }
 
+#submitLogin {
+  display: none;
+}
+
 .inputLogin {
     width: 70%;
     height: 40px;
     font-size: 18px;
     color: rgb(40, 40, 40);
     margin-bottom: 2%;
+    outline: none;
 }
 
 /*Botão Cadastrar*/

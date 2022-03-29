@@ -4,8 +4,29 @@ require_once ('../model/Usuario.php');
 require_once ('../model/Consulta.php');
 
 function login() {
-    $usuario = new Usuario;
-    $usuario->loginUsuario($_POST['login'], $_POST['senha']);
+    $consulta = new Usuario;
+    $query = $consulta->loginUsuario($_POST['email'], base64_encode($_POST['senha']));
+
+    if ($query && mysqli_num_rows($query) != 0) {
+        $row = mysqli_fetch_assoc($query);
+        
+        session_start();
+        $_SESSION['idUsuario'] = $row['idUsuario'];
+        $_SESSION['nome'] = $row['nome'];
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['tipoUsuario'] = $row['tipoUsuario'];
+
+        header("Location: redirect.php?action=home");
+    } else {
+        session_start();
+        $_SESSION['email'] = $_POST['email'];
+
+        $_SESSION['categoria'] = "Erro";
+        $_SESSION['mensagem'] = "Usuário ou senha incorretos";
+
+        header("Location: redirect.php?action=telaLogin");
+    }
+
 }
 
 function cadastrar() {
