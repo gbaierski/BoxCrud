@@ -35,7 +35,7 @@
                 <a href="../controller/redirect.php?action=telaLogin"><img src="../../assets/img/logo.png" width="130" height="130" alt="BoxTI" id="logoCadastro"></a>
                 <form method="POST" action="../controller/usuario.php?action=cadastrar" id="formCadastro">
                     <input type="text" name="nome" class="inputCadastro" placeholder="Nome" required>
-                    <input type="email" name="email" id="email" class="inputCadastro" onchange="verificaEmail('teste');" placeholder="E-mail" required>
+                    <input type="email" name="email" id="email" class="inputCadastro" onchange="verificaEmail();" placeholder="E-mail" required>
                     <input type="password" name="senha" id="senha" class="inputCadastro" onkeyup="verificaSenha()" placeholder="Senha" required>
                     <input type="password" name="confirmarSenha" id="confirmarSenha" class="inputCadastro" onkeyup="verificaSenha()" placeholder="Confirmar Senha" required>
                     <input type="submit" id="submitCadastro">

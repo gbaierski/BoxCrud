@@ -17,7 +17,7 @@
                 </nav>
                 <nav class="navMenu">
                     <ul>
-                        <li><?= $_SESSION['email'];?></li>
+                        <li><?= $_SESSION['nome'];?></li>
                         <li><a href="../controller/usuario.php?action=logoff">Sair</a></li>
                     </ul>
                 </nav>
