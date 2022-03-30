@@ -39,22 +39,39 @@ function cadastrar() {
     $usuario = new Usuario;
     $cadastro = $usuario->cadastraUsuario($_POST['nome'], $_POST['email'], 1, base64_encode($_POST['senha']));
 
+    session_start();
     if ($cadastro) {
-        $mensagem = "Usuário cadastrado!";
-        $categoria = "Sucesso!";
+        $_SESSION['categoria'] = "Sucesso!";
+        $_SESSION['mensagem'] = "Usuário cadastrado!";
+        $_SESSION['email'] = $_POST['email'];
     } else {
-        $mensagem = "Ocorreu um erro durante o cadastro.";
-        $categoria = "Erro";
+        $_SESSION['categoria'] = "Erro";
+        $_SESSION['mensagem'] = "Ocorreu um erro durante o cadastro.";
     }
 
-    $nomePagina = "Tela de Login | Box";
-    require '../view/telaLogin.php';
+    header("Location: redirect.php?action=telaLogin");
 }
 
 function verificaEmail() {
     $consulta = new Consulta;
     $verificacao = $consulta->consultaDuplicidadeEmail($_GET['email']);
     echo json_encode(['duplicidade' => $verificacao]);
+}
+
+function excluir() {
+    session_start();
+    $usuario = new Usuario;
+    $exclusao = $usuario->excluirUsuario($_POST['idUsuario']);
+    session_destroy();//Destrói a session em que o usuário estava logado
+    session_start();//Inicia a session novamente para inserir as mensagens
+    if ($exclusao) {
+        $_SESSION['categoria'] = "Sucesso!";
+        $_SESSION['mensagem'] = "Usuário excluído.";
+    } else {
+        $_SESSION['categoria'] = "Erro";
+        $_SESSION['mensagem'] = "Usuário não foi excluído.";
+    }
+    header("Location: redirect.php?action=telaLogin");
 }
 
 //Gerenciador de Rotas

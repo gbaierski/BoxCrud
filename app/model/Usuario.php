@@ -63,5 +63,10 @@ class Usuario {
         $sql = "INSERT INTO usuario (nome, email, senha, tipoUsuario) VALUES ('$nome', '$email', '$senha', $tipoUsuario)";
         return mysqli_query($this->connection->getConnection(), $sql);
     }
+
+    public function excluirUsuario($idUsuario) {
+        $sql = "DELETE FROM usuario WHERE idUsuario = '$idUsuario'";
+        return mysqli_query($this->connection->getConnection(), $sql);
+    }
 }
 ?>
