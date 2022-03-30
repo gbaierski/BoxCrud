@@ -3,6 +3,23 @@
 require_once ('../model/Usuario.php');
 require_once ('../model/Consulta.php');
 
+function cadastrar() {
+    $usuario = new Usuario;
+    $cadastro = $usuario->cadastraUsuario($_POST['nome'], $_POST['email'], 1, base64_encode($_POST['senha']));
+
+    session_start();
+    if ($cadastro) {
+        $_SESSION['categoria'] = "Sucesso!";
+        $_SESSION['mensagem'] = "Usuário cadastrado!";
+        $_SESSION['email'] = $_POST['email'];
+    } else {
+        $_SESSION['categoria'] = "Erro";
+        $_SESSION['mensagem'] = "Ocorreu um erro durante o cadastro.";
+    }
+
+    header("Location: redirect.php?action=telaLogin");
+}
+
 function login() {
     $usuario = new Usuario;
     $query = $usuario->loginUsuario($_POST['email'], base64_encode($_POST['senha']));
@@ -32,23 +49,6 @@ function login() {
 function logoff() {
     session_start();
     session_destroy();
-    header("Location: redirect.php?action=telaLogin");
-}
-
-function cadastrar() {
-    $usuario = new Usuario;
-    $cadastro = $usuario->cadastraUsuario($_POST['nome'], $_POST['email'], 1, base64_encode($_POST['senha']));
-
-    session_start();
-    if ($cadastro) {
-        $_SESSION['categoria'] = "Sucesso!";
-        $_SESSION['mensagem'] = "Usuário cadastrado!";
-        $_SESSION['email'] = $_POST['email'];
-    } else {
-        $_SESSION['categoria'] = "Erro";
-        $_SESSION['mensagem'] = "Ocorreu um erro durante o cadastro.";
-    }
-
     header("Location: redirect.php?action=telaLogin");
 }
 

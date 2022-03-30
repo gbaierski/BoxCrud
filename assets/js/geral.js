@@ -18,6 +18,6 @@ function fecharModal() {
 
 window.onclick = function(event) {
     if (event.target == document.getElementById("modalAviso")) {
-    document.getElementById("modalAviso").style.display = "none";
+        document.getElementById("modalAviso").style.display = "none";
     }
 }

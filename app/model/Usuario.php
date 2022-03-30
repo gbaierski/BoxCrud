@@ -53,7 +53,7 @@ class Usuario {
         return mysqli_query($this->connection->getConnection(), $sql);
     }
 
-    //cadastros
+    //registros
     public function cadastraUsuario($nome, $email, $tipoUsuario, $senha) {
         $this->nome = $nome;
         $this->email = $email;

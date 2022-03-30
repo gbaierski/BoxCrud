@@ -1,17 +1,20 @@
 emailDuplicado = "";
 
-function cadastrar() {
-    if (verificaSenha()) {
-        if (emailDuplicado != document.getElementById("email").value){
-            document.getElementById("submitCadastro").click();
-        } else {
+function verificaEmail() {
+    var email = document.getElementById('email').value;
+    const url = '../controller/usuario.php?action=verificaEmail&email=' + email;
+
+    fetch(url)
+    .then((resp) => resp.json())
+    .then(function(data) {
+        if(data.duplicidade) {
             emailDuplicado = document.getElementById("email").value;
             mensagem.innerHTML = "Este e-mail já está cadastrado! Por favor informe outro.";
             categoria.innerHTML = "Aviso";
             document.getElementById("modalHeader").style = "background-color: #b11818";
-            modalAviso();
+            modalAviso()
         }
-    }
+    });
 }
 
 function verificaSenha() {
@@ -30,19 +33,16 @@ function verificaSenha() {
     }
 }
 
-function verificaEmail() {
-    var email = document.getElementById('email').value;
-    const url = '../controller/usuario.php?action=verificaEmail&email=' + email;
-
-    fetch(url)
-    .then((resp) => resp.json())
-    .then(function(data) {
-        if(data.duplicidade) {
+function cadastrar() {
+    if (verificaSenha()) {
+        if (emailDuplicado != document.getElementById("email").value){
+            document.getElementById("submitCadastro").click();
+        } else {
             emailDuplicado = document.getElementById("email").value;
             mensagem.innerHTML = "Este e-mail já está cadastrado! Por favor informe outro.";
             categoria.innerHTML = "Aviso";
             document.getElementById("modalHeader").style = "background-color: #b11818";
-            modalAviso()
+            modalAviso();
         }
-    });
+    }
 }

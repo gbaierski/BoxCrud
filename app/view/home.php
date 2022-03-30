@@ -39,7 +39,7 @@ require_once "header.php";
             <input type="submit" id="submitAlteraExclui">
 
             <div id="containerBotoesAltera">
-                <button type="button" class="botaoAlterar-pushable" id="botaoExclui" onclick="excluir();">
+                <button type="button" class="botaoAlterar-pushable" id="botaoExclui" onclick="abrirModalExclui();">
                     <span class="botaoAlterar-shadow"></span>
                     <span class="botaoAlterar-edge" id="botaoExcluir-edge"></span>
                     <span class="botaoAlterar-front" id="botaoExcluir-front">
@@ -59,29 +59,6 @@ require_once "header.php";
     </div>
 </section>
 </body>
-
-<script>
-    function excluir() {
-        document.getElementById("modalConfirmaExclui").style = "display:block";
-    }
-
-    function fecharModalExclui() {
-        document.getElementById("modalConfirmaExclui").style = "display: none";
-    }
-
-    function verificaConfirmacao () {
-        input = document.getElementById("confirmarExclusao");
-        confirma = document.getElementById("botaoConfirmaExclui");
-
-        if(input.value == "confirmar" || input.value == "Confirmar" || input.value == "CONFIRMAR") {
-            confirma.style="display: block;";
-        } else {
-            confirma.style="display: none;";
-        }
-    }
-
-    function confirmaExclusao() {
-        document.getElementById("formAltera").action = "../controller/usuario.php?action=excluir";
-        document.getElementById("submitAlteraExclui").click();
-    }
-</script>
+    <script src="../../assets/js/geral.js"></script>
+    <script src="../../assets/js/home.js"></script>
+</html>
