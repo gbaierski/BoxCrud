@@ -52,10 +52,47 @@ function logoff() {
     header("Location: redirect.php?action=telaLogin");
 }
 
-function verificaEmail() {
+function verificaEmail($email = NULL) {
+    if (isset($_GET['email'])) {
+        $email = $_GET['email'];
+    }
+
     $consulta = new Consulta;
-    $verificacao = $consulta->consultaDuplicidadeEmail($_GET['email']);
-    echo json_encode(['duplicidade' => $verificacao]);
+    $verificacao = $consulta->consultaDuplicidadeEmail($email);
+
+    if (isset($_GET['email'])) {
+        echo json_encode(['duplicidade' => $verificacao]);
+    } else {
+        return $verificacao;
+    }
+}
+
+function alterar() {
+    session_start();
+    if($_POST['senha'] == $_POST['confirmarSenha']) {
+        if (!verificaEmail($_POST['email']) || $_POST['email'] == $_SESSION['email']) {
+            $usuario = new Usuario;
+            $alteracao = $usuario->alteraUsuario($_POST['idUsuario'], $_POST['nome'], $_POST['email'], base64_encode($_POST['senha']));
+            if ($alteracao) {
+                $_SESSION['categoria'] = "Sucesso!";
+                $_SESSION['mensagem'] = "Usuário alterado!";
+
+                $_SESSION['nome'] = $_POST['nome'] != NULL ? $_POST['nome'] : $_SESSION['nome'];
+                $_SESSION['email'] = $_POST['email'] != NULL ? $_POST['email'] : $_SESSION['email'];
+            } else {
+                $_SESSION['categoria'] = "Erro";
+                $_SESSION['mensagem'] = "Ocorreu um erro durante a alteração.";
+            }
+        } else {
+            $_SESSION['categoria'] = "Aviso";
+            $_SESSION['mensagem'] = "Este e-mail já está cadastrado! Por favor informe outro.";
+        }
+    } else {
+        $_SESSION['categoria'] = "Erro";
+        $_SESSION['mensagem'] = "A senha está diferente da confirmação. Por favor, tente novamente";
+    }
+
+    header("Location: redirect.php?action=home");
 }
 
 function excluir() {

@@ -12,7 +12,7 @@ function verificaEmail() {
             mensagem.innerHTML = "Este e-mail já está cadastrado! Por favor informe outro.";
             categoria.innerHTML = "Aviso";
             document.getElementById("modalHeader").style = "background-color: #b11818";
-            modalAviso()
+            modalAviso();
         }
     });
 }

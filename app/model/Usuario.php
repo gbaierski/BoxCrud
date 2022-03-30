@@ -64,6 +64,22 @@ class Usuario {
         return mysqli_query($this->connection->getConnection(), $sql);
     }
 
+    public function alteraUsuario($idUsuario, $nome, $email, $senha) {
+        $sql = "UPDATE usuario SET ";
+
+        if ($nome != NULL)
+            $sql .= "nome = '$nome', ";
+        if ($email != NULL)
+            $sql .= "email = '$email', ";
+        if ($senha != NULL)
+            $sql .= "senha = '$senha', ";
+
+        $sql .= "idUsuario = $idUsuario ";
+        $sql .= "WHERE idUsuario = '$idUsuario';";
+        
+        return mysqli_query($this->connection->getConnection(), $sql);
+    }
+
     public function excluirUsuario($idUsuario) {
         $sql = "DELETE FROM usuario WHERE idUsuario = '$idUsuario'";
         return mysqli_query($this->connection->getConnection(), $sql);

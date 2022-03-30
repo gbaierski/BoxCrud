@@ -2,7 +2,7 @@ let mensagem = document.getElementById("textoModalAviso");
 let categoria = document.getElementById("tituloModalAviso");
 
 if (mensagem.innerHTML != "") {
-    if (categoria.innerHTML == "Erro") {
+    if (categoria.innerHTML == "Erro" || categoria.innerHTML == "Aviso") {
         document.getElementById("modalHeader").style = "background-color: #b11818";
     }
     modalAviso();
