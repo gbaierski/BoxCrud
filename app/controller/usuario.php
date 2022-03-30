@@ -99,8 +99,12 @@ function excluir() {
     session_start();
     $usuario = new Usuario;
     $exclusao = $usuario->excluirUsuario($_POST['idUsuario']);
-    session_destroy();//Destrói a session em que o usuário estava logado
-    session_start();//Inicia a session novamente para inserir as mensagens
+
+    if (!isset($_POST['homeAdmin'])) {
+        session_destroy();//Destrói a session em que o usuário estava logado
+        session_start();//Inicia a session novamente para inserir as mensagens
+    }
+
     if ($exclusao) {
         $_SESSION['categoria'] = "Sucesso!";
         $_SESSION['mensagem'] = "Usuário excluído.";
@@ -108,7 +112,12 @@ function excluir() {
         $_SESSION['categoria'] = "Erro";
         $_SESSION['mensagem'] = "Usuário não foi excluído.";
     }
-    header("Location: redirect.php?action=telaLogin");
+
+    if (isset($_POST['homeAdmin']) && $_POST['homeAdmin'] == 1) {
+        header("Location: redirect.php?action=home");
+    } else {
+        header("Location: redirect.php?action=telaLogin");
+    }
 }
 
 //Gerenciador de Rotas

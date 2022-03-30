@@ -51,16 +51,17 @@ require_once ('../model/Consulta.php');
         if($query && mysqli_num_rows($query) != 0 ) {
             while($row = mysqli_fetch_assoc($query)) {
             ?>
-        <div id="usuario_1" class="usuario">
-            <form method="POST" action="../controller/usuario.php?action=alterar" id="formAlteraA">
+        <div id="usuario_<?= $row['idUsuario'] ?>" class="usuario">
+            <form method="POST" action="../controller/usuario.php?action=alterar" id="formAlteraA_<?=$row['idUsuario']?>">
                 <input type="text" name="nome" class="inputAlteraA" value="<?=$row['nome']?>">
                 <input type="email" name="email" id="email" class="inputAlteraA" onchange="verificaEmail();" value="<?=$row['email']?>">
                 <input type="password" name="senha" id="senha" class="inputAlteraA" onkeyup="verificaSenha()" placeholder="Senha">
                 <input type="password" name="confirmarSenha" id="confirmarSenha" class="inputAlteraA" onkeyup="verificaSenha()" placeholder="Confirmar Senha">
-                <input type="hidden" name="idUsuario" value="<?= $row['idUsuario'] ?>">
-                <input type="submit" id="submitAlteraExcluiA">
+                <input type="hidden" name="idUsuario" value="<?=$row['idUsuario']?>">
+                <input type="hidden" name="homeAdmin" value="1">
+                <input type="submit" id="submitAlteraExcluiA_<?=$row['idUsuario']?>" class="submitAlteraExcluiA">
 
-                    <button type="button" class="botaoAlterar-pushableA" id="botaoExcluiA" onclick="abrirModalExclui();">
+                    <button type="button" class="botaoAlterar-pushableA" id="botaoExcluiA" onclick="abrirModalExclui('<?=$row['idUsuario']?>');">
                         <span class="botaoAlterar-shadowA"></span>
                         <span class="botaoAlterar-edgeA" id="botaoExcluir-edgeA"></span>
                         <span class="botaoAlterar-frontA" id="botaoExcluir-frontA">
