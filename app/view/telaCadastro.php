@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <link rel="icon" type="image/x-icon" href="../../assets/img/logo.ico">
         <link rel="stylesheet" href="../../assets/css/telaCadastro.css">
+        <link rel="stylesheet" href="../../assets/css/modalAviso.css">
     </head>
     <body>
         <div id="modalAviso" class="modalAviso">
