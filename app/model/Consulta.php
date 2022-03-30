@@ -18,4 +18,9 @@ class Consulta {
             return 0;
         }
     }
+
+    function consultaUsuarios() {
+        $sql = "SELECT idUsuario, nome, email, tipoUsuario FROM usuario";
+        return  mysqli_query($this->connection->getConnection(), $sql);
+    }
 }

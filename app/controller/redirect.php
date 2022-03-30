@@ -33,7 +33,13 @@ function home() {
     unset($_SESSION['mensagem']);
     unset($_SESSION['categoria']);
 
-    require '../view/home.php';
+    if (isset($_SESSION['tipoUsuario']) && $_SESSION['tipoUsuario'] == 0) {
+        $nomePagina = "Home Admin | Box";
+        require '../view/homeAdmin.php';
+    } else {
+        require '../view/home.php';
+    }
+
 }
 
 //Gerenciador de Rotas
