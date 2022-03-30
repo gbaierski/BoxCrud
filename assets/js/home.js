@@ -12,7 +12,7 @@ function verificaConfirmacao () {
     input = document.getElementById("confirmarExclusao");
     confirma = document.getElementById("botaoConfirmaExclui");
 
-    if(input.value == "confirmar" || input.value == "Confirmar" || input.value == "CONFIRMAR") {
+    if(input.value.toLowerCase() == "confirmar") {
         confirma.style="display: block;";
     } else {
         confirma.style="display: none;";

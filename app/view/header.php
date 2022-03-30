@@ -19,7 +19,14 @@
                 </nav>
                 <nav class="navMenu">
                     <ul>
-                        <li><?= $_SESSION['nome'];?></li>
+                        <li> 
+                            <?php 
+                            if ($nomePagina == "Home Admin | Box")
+                                echo "Administrador";
+                            else
+                                echo $_SESSION['nome'];
+                            ?>
+                        </li>
                         <li><a href="../controller/usuario.php?action=logoff">Sair</a></li>
                     </ul>
                 </nav>

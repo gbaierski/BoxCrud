@@ -70,7 +70,7 @@ function verificaEmail($email = NULL) {
 function alterar() {
     session_start();
     if($_POST['senha'] == $_POST['confirmarSenha']) {
-        if (!verificaEmail($_POST['email']) || $_POST['email'] == $_SESSION['email']) {
+        if (!verificaEmail($_POST['email']) || $_POST['email'] == $_SESSION['email'] || $_SESSION['tipoUsuario'] == 0) {
             $usuario = new Usuario;
             $alteracao = $usuario->alteraUsuario($_POST['idUsuario'], $_POST['nome'], $_POST['email'], base64_encode($_POST['senha']));
             if ($alteracao) {

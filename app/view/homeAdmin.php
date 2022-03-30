@@ -55,8 +55,8 @@ require_once ('../model/Consulta.php');
             <form method="POST" action="../controller/usuario.php?action=alterar" id="formAlteraA_<?=$row['idUsuario']?>">
                 <input type="text" name="nome" class="inputAlteraA" value="<?=$row['nome']?>">
                 <input type="email" name="email" id="email" class="inputAlteraA" onchange="verificaEmail();" value="<?=$row['email']?>">
-                <input type="password" name="senha" id="senha" class="inputAlteraA" onkeyup="verificaSenha()" placeholder="Senha">
-                <input type="password" name="confirmarSenha" id="confirmarSenha" class="inputAlteraA" onkeyup="verificaSenha()" placeholder="Confirmar Senha">
+                <input type="password" name="senha" id="senha_<?=$row['idUsuario']?>" class="inputAlteraA" onkeyup="verificaSenha()" placeholder="Senha">
+                <input type="password" name="confirmarSenha" id="confirmarSenha_<?=$row['idUsuario']?>" class="inputAlteraA" onkeyup="verificaSenha('<?=$row['idUsuario']?>')" placeholder="Confirmar Senha">
                 <input type="hidden" name="idUsuario" value="<?=$row['idUsuario']?>">
                 <input type="hidden" name="homeAdmin" value="1">
                 <input type="submit" id="submitAlteraExcluiA_<?=$row['idUsuario']?>" class="submitAlteraExcluiA">
@@ -69,7 +69,7 @@ require_once ('../model/Consulta.php');
                         </span>
                     </button>
 
-                    <button type="button" class="botaoAlterar-pushableA" id="botaoAlteraA" onclick="alterar();">
+                    <button type="button" class="botaoAlterar-pushableA" id="botaoAlteraA" onclick="alterar('<?=$row['idUsuario']?>');">
                         <span class="botaoAlterar-shadowA"></span>
                         <span class="botaoAlterar-edgeA"></span>
                         <span class="botaoAlterar-frontA" id="botaoAlterar-frontA">
